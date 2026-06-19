@@ -9,7 +9,7 @@ export function useNoteSocket({ noteId, onEdit, onTyping, onPresence }) {
     const token = localStorage.getItem('accessToken')
     if (!token) return
 
-    const socket = new WebSocket(`ws://localhost:8080/ws?token=${token}`)
+    const socket = new WebSocket(`${import.meta.env.VITE_WS_URL}?token=${token}`)
     const client = Stomp.over(socket)
     client.debug = null
 
